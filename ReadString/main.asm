@@ -21,7 +21,7 @@ main proc
 	call ReadString
 	mov r8, rax
 
-	mov rax, STD_OUTPUT_HANDLE
+	mov rcx, STD_OUTPUT_HANDLE
 	call GetStdHandle
 	mov rcx, rax
 
@@ -53,7 +53,8 @@ ReadString proc szStr:PTR BYTE, str_size:DWORD
 	call ReadConsoleA
 	test rax, rax
 	mov eax, nChrRead
-
+	
+	jmp @end
 @Error:
 	xor rax, rax
 
